@@ -1,0 +1,48 @@
+.card {
+  background: #dedede;
+  display: block;
+  width: 328px;
+  height: 379px;
+  border-radius: 12px;
+  position: responsive;
+}
+.card-content {
+  padding: 24px 24px 16px 24px;
+  position: responsive;
+}
+
+.card-image {
+  width: 280px;
+  height: 188px;
+  border-radius: 12px;
+}
+
+.card-title {
+  margin-top: 16px;
+  font-size: 18px;
+  display: block;
+}
+
+.card-description {
+  margin: 16px 0;
+  font-size: 14px;
+  color: #666666;
+  display: block;
+}
+
+.card-tags {
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 200px;
+  height: 18px;
+
+  /* Inside auto layout */
+  flex: none;
+  order: 2;
+  flex-grow: 0;
+}
