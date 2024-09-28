@@ -22,7 +22,13 @@ body {
 
 .app {
   margin: 20px;
+  display: flexbox;
+  justify-content: center;
 }
 
-.app-cards {
+.app-explorar-gimnasios-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
 }
