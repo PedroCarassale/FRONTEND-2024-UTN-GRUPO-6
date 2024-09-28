@@ -1,0 +1,176 @@
+/* Estilos generales del sidebar */
+.sidebar {
+  height: 100vh;
+  background-color: white;
+  border-right: 1px solid #e5e5e5;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  position: sticky;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-header {
+  padding: 16px;
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar-name {
+  font-size: 25px;
+  padding: 10px;
+}
+
+.logo {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.logo.expanded {
+  width: 128px;
+}
+
+.logo.collapsed {
+  width: 0;
+}
+
+.toggle-button {
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+.toggle-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Estilos de la lista de ítems */
+.sidebar-list {
+  flex-grow: 1;
+  padding: 0 12px;
+}
+
+/* Estilos del footer del sidebar */
+.sidebar-footer {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.user-info.expanded {
+  width: 208px;
+  margin-left: 12px;
+}
+
+.user-info.collapsed {
+  width: 0;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 600;
+}
+
+.user-email {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* Estilos de los ítems del sidebar */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  margin: 4px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-item.active {
+  background: linear-gradient(to top right, #c7d2fe, #e0e7ff);
+  color: #3730a3;
+}
+
+.sidebar-item.inactive {
+  color: #4b5563;
+}
+
+.sidebar-item.inactive:hover {
+  background-color: #eef2ff;
+}
+
+.sidebar-text {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.sidebar-text.expanded {
+  width: 208px;
+  margin-left: 12px;
+}
+
+.sidebar-text.collapsed {
+  width: 0;
+}
+
+/* Estilos de la alerta */
+.alert-dot {
+  position: absolute;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #4338ca;
+}
+
+.alert-dot.collapsed {
+  top: 8px;
+}
+
+/* Tooltip cuando el sidebar está colapsado */
+.sidebar-tooltip {
+  position: absolute;
+  left: 100%;
+  padding: 4px 8px;
+  background-color: #eef2ff;
+  color: #3730a3;
+  border-radius: 4px;
+  font-size: 14px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(-12px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+}
+
+.sidebar-item:hover .sidebar-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
