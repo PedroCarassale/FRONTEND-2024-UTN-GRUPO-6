@@ -1,10 +1,11 @@
 .card {
-  background: #dedede;
+  background: #e0f717;
   display: block;
   width: 328px;
   height: 379px;
   border-radius: 12px;
   position: responsive;
+  
 }
 .card-content {
   padding: 24px 24px 16px 24px;
@@ -14,7 +15,7 @@
 .card-image {
   width: 280px;
   height: 188px;
-  border-radius: 12px;
+  border-radius: 18px;
 }
 
 .card-title {
