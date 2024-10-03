@@ -14,14 +14,14 @@ function getCards(count: number) {
     ></Card>
   ));
 }
-function Home() {
+function Home2() {
   return (
     <section className="app">
-      {/* Mis Gimnasios */}
-      <h2 className="mis-gimnasios">MIS GIMNASIOS</h2>
-      <div className="app-explorar-gimnasios-cards">{getCards(3)}</div>
+      {/* Explorar Gimnasios */}
+      <h2 className="mis-gimnasios">Explorar Gimnasios</h2>
+      <div className="app-explorar-gimnasios-cards">{getCards(10)}</div>
     </section>
   );
 }
 
-export default Home;
+export default Home2;
