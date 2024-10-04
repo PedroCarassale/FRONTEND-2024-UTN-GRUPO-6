@@ -35,7 +35,7 @@ function App() {
   return (
     <section className="app">
       {/* Mis Gimnasios */}
-      <h2 className="mis-gimnasios">Mis Gimnasios</h2>
+      <h2 className="mis-gimnasios">MIS GIMNASIOS</h2>
       <div className="app-explorar-gimnasios-cards">
         {misGimnasios.map((gimnasio) => (
           <Card
@@ -43,13 +43,13 @@ function App() {
             img={gimnasio.imagen_url}
             title={gimnasio.nombre}
             description={`${gimnasio.direccion}, ${gimnasio.ciudad}, Tel: ${gimnasio.telefono}`}
-            tags={[["#f00", "Ya inscripto"]]}
+            tags={[["#f00", "Inscripto"]]}
           />
         ))}
       </div>
 
       {/* Explorar Gimnasios */}
-      <h2 className="mis-gimnasios">Explorar Gimnasios</h2>
+      <h2 className="mis-gimnasios">EXPLORAR GIMNASIOS</h2>
       <div className="app-explorar-gimnasios-cards">
         {gimnasiosDisponibles.map((gimnasio) => (
           <Card
