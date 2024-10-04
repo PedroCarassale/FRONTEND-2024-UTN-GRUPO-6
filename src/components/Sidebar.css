@@ -43,8 +43,11 @@
   padding: 12px;
   border-radius: 8px;
   background-color: #f0f0f0;
+  border-color: rgb(57, 57, 57);
   transition: background-color 0.2s ease;
-  right: 100%;
+  margin-right: 0px;
+  margin-left: auto;
+  width: 50px;
 }
 
 .toggle-button:hover {
