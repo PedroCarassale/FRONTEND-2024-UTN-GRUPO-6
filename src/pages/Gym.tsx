@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Sidebar, { SidebarItem } from "../components/Sidebar";
-import { Dumbbell, Settings, Shapes } from "lucide-react";
+import { Dumbbell, Newspaper, Shapes } from "lucide-react";
 import "./Gym.css";
 
 function Gym() {
@@ -11,9 +11,7 @@ function Gym() {
       <Sidebar name={id || ""}>
         <SidebarItem icon={<Dumbbell size={20} />} text={"Rutinas"} />
         <SidebarItem icon={<Shapes size={20} />} text={"Clases"} />
-        <SidebarItem icon={<Settings size={20} />} text={"Settings"} />
-        <SidebarItem icon={<Settings size={20} />} text={"Settings"} />
-        <SidebarItem icon={<Settings size={20} />} text={"Settings"} />
+        <SidebarItem icon={<Newspaper size={20} />} text={"Novedades"} />
       </Sidebar>
     </section>
   );

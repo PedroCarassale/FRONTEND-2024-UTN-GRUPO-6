@@ -1,5 +1,6 @@
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
 import { useContext, createContext, useState, ReactNode } from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 // Definir tipos para las props de Sidebar y SidebarItem
@@ -25,13 +26,13 @@ export default function Sidebar({ name, children }: SidebarProps) {
     <aside className="sidebar">
       <nav className="sidebar-nav">
         <div className="sidebar-header">
-          <span className="sidebar-name">{name}</span>
           <button
             onClick={() => setExpanded((curr) => !curr)}
             className="toggle-button"
           >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
+          <span className="sidebar-name">{name}</span>
         </div>
 
         <SidebarContext.Provider value={{ expanded }}>
@@ -61,13 +62,17 @@ export function SidebarItem({ icon, text, active, alert }: SidebarItemProps) {
   const { expanded } = useContext(SidebarContext);
 
   return (
-    <li className={`sidebar-item ${active ? "active" : "inactive"}`}>
-      {icon}
-      <span className={`sidebar-text ${expanded ? "expanded" : "collapsed"}`}>
-        {text}
-      </span>
-      {alert && <div className={`alert-dot ${expanded ? "" : "collapsed"}`} />}
-      {!expanded && <div className="sidebar-tooltip">{text}</div>}
-    </li>
+    <Link to={`gimnasio/${text}`}>
+      <li className={`sidebar-item ${active ? "active" : "inactive"}`}>
+        {icon}
+        <span className={`sidebar-text ${expanded ? "expanded" : "collapsed"}`}>
+          {text}
+        </span>
+        {alert && (
+          <div className={`alert-dot ${expanded ? "" : "collapsed"}`} />
+        )}
+        {!expanded && <div className="sidebar-tooltip">{text}</div>}
+      </li>
+    </Link>
   );
 }
