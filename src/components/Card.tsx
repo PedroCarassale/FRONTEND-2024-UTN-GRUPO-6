@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Card.css";
 import CardTag from "./CardTag";
 
@@ -16,14 +17,16 @@ const getTags = (tags: string[][]) => {
 
 const Card = ({ img, title, description, tags }: CardProps) => {
   return (
-    <section className="card">
-      <div className="card-content">
-        <img src={img} className="card-image" />
-        <strong className="card-title">{title}</strong>
-        <p className="card-description">{description}</p>
-        <div className="card-tags">{getTags(tags)}</div>
-      </div>
-    </section>
+    <Link to={`gimnasio/${title}`}>
+      <section className="card">
+        <div className="card-content">
+          <img src={img} className="card-image" />
+          <strong className="card-title">{title}</strong>
+          <p className="card-description">{description}</p>
+          <div className="card-tags">{getTags(tags)}</div>
+        </div>
+      </section>
+    </Link>
   );
 };
 
