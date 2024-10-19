@@ -1,0 +1,39 @@
+.main {
+  display: block;
+  width: 100%;
+}
+
+.title-and-button {
+  display: flex;
+  justify-content: space-between; /* Distribuye los elementos, uno a la izquierda y otro a la derecha */
+  align-items: center; /* Asegura que ambos elementos estén centrados verticalmente */
+  padding: 1rem;
+}
+
+.title {
+  font-size: 4rem;
+  text-align: center; /* Alinea el texto en el centro, pero el flexbox controla la posición */
+  color: white;
+  flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
+}
+
+.nueva-rutina {
+  padding: 0.5rem 1rem;
+  font-size: 1em;
+  background-color: white; /* Color del botón */
+  color: black;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.nueva-rutina:hover {
+  background-color: #edeeed; /* Efecto hover en el botón */
+}
+
+.list-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0px 15px;
+}

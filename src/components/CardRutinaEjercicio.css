@@ -2,9 +2,10 @@
   background: #dedede;
   display: block;
   width: 328px;
-  height: 379px;
+  height: 300px;
   border-radius: 12px;
   position: responsive;
+  margin-top: 20px;
 }
 .card-content {
   padding: 24px 24px 16px 24px;
