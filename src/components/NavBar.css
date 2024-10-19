@@ -1,5 +1,8 @@
 .logo {
-    width: 50px; /* Ajusta el ancho del logo según tus necesidades */
-    height: auto; /* Mantiene la proporción del alto */
-  }
-  
+  width: 50px; /* Ajusta el ancho del logo según tus necesidades */
+  height: auto; /* Mantiene la proporción del alto */
+}
+.navbar {
+  background: #1d2226;
+  border-bottom: rgba(255, 255, 255, 0.12) solid 1px;
+}
