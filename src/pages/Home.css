@@ -1,23 +1,10 @@
 body {
-  background-color: black !important;
-  /* background-image: linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.1) 1px,
-      transparent 1px
-    ),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 20px 20px;
-  background-position: 0 0;
-  height: 100vh;
-  margin: 0; */
+  background-color: #ffffff;
 }
 
 .mis-gimnasios {
-  /* Mis Gimnasios */
   font-size: 35px;
-  /* identical to box height */
-
-  color: white;
+  color: #000000;
 }
 
 .app {
