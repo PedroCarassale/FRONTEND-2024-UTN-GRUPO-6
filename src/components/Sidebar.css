@@ -1,25 +1,28 @@
 .sidebar {
-  background: #1d2226;
+  background: white;
   width: 280px;
   height: calc(100vh - 68px);
+  border-right: #c4c2c2 solid 1px;
 }
 
 .link {
   text-decoration: none;
-  color: white;
+  color: #3c3c3c;
   display: flex;
   align-items: center;
 }
 
+.item-active {
+  color: #e2483d;
+}
+
 .sidebar-list {
-  color: white;
   list-style: none;
   padding: 0;
 }
 
 .sidebar-item {
   display: flex;
-  color: white;
   align-items: center;
   padding: 1.2rem 2.4rem;
 }
@@ -33,11 +36,10 @@
 }
 
 .icon {
-  margin-right: 16px;
+  margin: 0px 16px;
   width: 30px;
   height: 30px;
   line-height: 1.25;
-  fill: white;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,11 +48,11 @@
 .gym-name {
   display: flex;
   align-items: center;
-  background: #1d2226;
+  background: white;
   padding: 2rem;
   font-weight: 600;
   font-size: 30px;
   gap: 1.2rem;
   flex-wrap: wrap;
-  color: white;
+  color: #000000;
 }

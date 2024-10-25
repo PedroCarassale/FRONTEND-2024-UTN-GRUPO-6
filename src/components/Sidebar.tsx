@@ -4,15 +4,19 @@ import "./Sidebar.css";
 
 interface SidebarProps {
   name: string;
+  active: string;
 }
 
-export default function Sidebar({ name }: SidebarProps) {
+export default function Sidebar({ name, active }: SidebarProps) {
   return (
     <aside className="sidebar">
       <div className="gym-name"> {name} </div>
       <ul className={"sidebar-list"}>
         <li className="sidebar-item">
-          <Link to={`ejercicios`} className="link">
+          <Link
+            to={`ejercicios`}
+            className={`link ${active === "ejercicios" ? "item-active" : ""}`}
+          >
             <div className="icon">
               <Dumbbell></Dumbbell>
             </div>
@@ -20,7 +24,11 @@ export default function Sidebar({ name }: SidebarProps) {
           </Link>
         </li>
         <li className="sidebar-item">
-          <Link to={`rutinas`} className="link">
+          <Link
+            to={`rutinas`}
+            className={`link ${active === "rutinas" ? "item-active" : ""}`}
+          >
+            {active === "rutinas" ? <></> : <></>}
             <div className="icon">
               <CircleGauge></CircleGauge>
             </div>
