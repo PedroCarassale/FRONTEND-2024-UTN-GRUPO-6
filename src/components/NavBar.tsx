@@ -29,35 +29,22 @@ export default function NavBar() {
           </li>
         </ul>
 
-        {/* Botón para mostrar/ocultar el menú en dispositivos móviles */}
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
         <div className="collapse navbar-collapse" id="navbarNav">
           {/* Buscador */}
-          <form className="d-flex ms-auto">
+          <form className="d-flex ms-auto buscador">
             <input
               className="form-control me-2"
               type="search"
               placeholder="Buscar"
               aria-label="Buscar"
             />
-            <button className="btn btn-outline-light" type="submit">
-              Buscar
-            </button>
           </form>
 
           {/*Mostrar botón de login*/}
-          <a className="btn btn-outline-light ms-3" href="/login">
+          <a
+            className="btn btn-outline-light ms-3 iniciar-sesion"
+            href="/login"
+          >
             Iniciar sesión
           </a>
 

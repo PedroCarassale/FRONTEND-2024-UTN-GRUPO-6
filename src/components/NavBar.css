@@ -3,6 +3,21 @@
   height: auto; /* Mantiene la proporción del alto */
 }
 .navbar {
-  background: #1d2226;
+  background: #ffffff;
   border-bottom: rgba(255, 255, 255, 0.12) solid 1px;
+}
+
+.nav-link {
+  color: #3c3c3c;
+}
+
+.buscador {
+  text-decoration: none;
+  color: #3c3c3c;
+  border-radius: 6px;
+}
+
+.iniciar-sesion {
+  color: #3c3c3c;
+  border: #3c3c3c 1px solid;
 }
