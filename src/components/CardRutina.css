@@ -30,24 +30,7 @@
   align-items: center;
 }
 
-.card-edit {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40px; /* Ancho y alto iguales para hacer el círculo */
-  height: 40px;
-  border-radius: 50%; /* Hace el botón circular */
-  background-color: #fafafa; /* Color de fondo */
-  border: none; /* Sin borde */
-  color: #3c3c3c; /* Color del icono */
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.card-edit:hover {
-  background-color: #0056b3; /* Color al pasar el cursor */
-}
-
+.card-edit,
 .card-view {
   display: flex;
   justify-content: center;
@@ -62,8 +45,9 @@
   transition: background-color 0.3s;
 }
 
+.card-edit:hover,
 .card-view:hover {
-  background-color: #0056b3; /* Color al pasar el cursor */
+  background-color: #ebe8e8; /* Color al pasar el cursor */
 }
 
 .card-buttons {
