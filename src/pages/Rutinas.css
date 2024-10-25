@@ -12,8 +12,9 @@
 
 .title {
   font-size: 4rem;
-  text-align: center; /* Alinea el texto en el centro, pero el flexbox controla la posición */
-  color: white;
+  text-align: left; /* Alinea el texto en el centro, pero el flexbox controla la posición */
+  padding-left: 50px;
+  color: #3c3c3c;
   flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
 }
 
@@ -25,6 +26,7 @@
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  border: #3c3c3c 1px solid;
 }
 
 .nueva-rutina:hover {

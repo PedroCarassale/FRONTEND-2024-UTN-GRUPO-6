@@ -16,7 +16,7 @@ function Rutinas() {
 
   return (
     <section className="gimnasio">
-      <Sidebar name={id || "Gimnasio"}></Sidebar>
+      <Sidebar name={id || "Gimnasio"} active="rutinas"></Sidebar>
       <div className="main">
         <div className="title-and-button">
           <span className="title">Rutinas</span>
