@@ -1,0 +1,71 @@
+.card {
+  background: #fafafa;
+  display: block;
+  width: 328px;
+  height: 315px;
+  border-radius: 12px;
+  position: responsive;
+  margin-top: 20px;
+}
+.card-content {
+  padding: 24px 24px 16px 24px;
+  position: responsive;
+}
+
+.card-image {
+  width: 280px;
+  height: 188px;
+  border-radius: 12px;
+}
+
+.card-title {
+  margin-top: 16px;
+  font-size: 18px;
+  display: block;
+}
+
+.exercises-and-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Ancho y alto iguales para hacer el círculo */
+  height: 40px;
+  border-radius: 50%; /* Hace el botón circular */
+  background-color: #fafafa; /* Color de fondo */
+  border: none; /* Sin borde */
+  color: #3c3c3c; /* Color del icono */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card-edit:hover {
+  background-color: #0056b3; /* Color al pasar el cursor */
+}
+
+.card-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Ancho y alto iguales para hacer el círculo */
+  height: 40px;
+  border-radius: 50%; /* Hace el botón circular */
+  background-color: #fafafa; /* Color de fondo */
+  border: none; /* Sin borde */
+  color: #3c3c3c; /* Color del icono */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.card-view:hover {
+  background-color: #0056b3; /* Color al pasar el cursor */
+}
+
+.card-buttons {
+  display: flex;
+}
