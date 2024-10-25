@@ -4,7 +4,7 @@
 }
 .navbar {
   background: #ffffff;
-  border-bottom: rgba(255, 255, 255, 0.12) solid 1px;
+  border-bottom: #c4c2c2 solid 1px;
 }
 
 .nav-link {
@@ -14,7 +14,10 @@
 .buscador {
   text-decoration: none;
   color: #3c3c3c;
-  border-radius: 6px;
+}
+
+.buscador input {
+  border: #3c3c3c 1px solid;
 }
 
 .iniciar-sesion {
