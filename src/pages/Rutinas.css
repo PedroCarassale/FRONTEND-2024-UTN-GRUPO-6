@@ -14,7 +14,7 @@
   font-size: 4rem;
   text-align: left; /* Alinea el texto en el centro, pero el flexbox controla la posición */
   padding-left: 50px;
-  color: #3c3c3c;
+  color: #000000;
   flex-grow: 1; /* Permite que el título ocupe el espacio disponible */
 }
 
@@ -38,4 +38,8 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin: 0px 15px;
+}
+
+.gimnasio {
+  background: #fafafa;
 }

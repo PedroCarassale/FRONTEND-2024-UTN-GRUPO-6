@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import "./Rutinas.css";
-import CardRutinaEjercicio from "../components/CardRutinaEjercicio";
+import CardRutina from "../components/CardRutina";
 const misGimnasios = [
   { imagen_url: "/imagenes/Tren superior.png", nombre: "Tren Superior" },
   { imagen_url: "/imagenes/Tren inferior.png", nombre: "Tren Inferior" },
@@ -24,9 +24,10 @@ function Rutinas() {
         </div>
         <div className="list-cards">
           {misGimnasios.map((gimnasio) => (
-            <CardRutinaEjercicio
+            <CardRutina
               img={gimnasio.imagen_url}
               title={gimnasio.nombre}
+              exercises={5}
             />
           ))}
         </div>
