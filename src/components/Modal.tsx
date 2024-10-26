@@ -12,7 +12,7 @@ export interface Exercise {
 
 interface Routine {
   nombre: string;
-  imagen: File | null;
+  imagen: string | null;
   descansoEntreEjercicios: string;
   ejercicios: Exercise[];
 }
@@ -23,10 +23,21 @@ interface ModalFormProps {
 
 const ModalForm: React.FC<ModalFormProps> = ({ closeModal }) => {
   const [nombreRutina, setNombreRutina] = useState<string>("");
-  const [imagenRutina, setImagenRutina] = useState<File | null>(null);
+  const [imagenRutina, setImagenRutina] = useState<string | null>(null);
   const [descansoEntreEjercicios, setDescansoEntreEjercicios] =
     useState<string>("");
   const [exercises, setExercises] = useState<Exercise[]>([]);
+
+  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagenRutina(reader.result as string);
+      };
+      reader.readAsDataURL(file); // Convierte la imagen a base64
+    }
+  };
 
   const addExercise = () => {
     setExercises([
@@ -138,9 +149,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ closeModal }) => {
             type="file"
             id="imagen"
             name="imagen"
-            onChange={(e) =>
-              setImagenRutina(e.target.files ? e.target.files[0] : null)
-            }
+            onChange={handleImageUpload}
           />
 
           <h3>Ejercicios</h3>
