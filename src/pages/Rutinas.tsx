@@ -1,33 +1,52 @@
 import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Sidebar from "../components/Sidebar";
 import "./Rutinas.css";
 import CardRutina from "../components/CardRutina";
-const misGimnasios = [
-  { imagen_url: "/imagenes/Tren superior.png", nombre: "Tren Superior" },
-  { imagen_url: "/imagenes/Tren inferior.png", nombre: "Tren Inferior" },
-  { imagen_url: "/imagenes/Tren superior.png", nombre: "Tren Superior" },
-  { imagen_url: "/imagenes/Tren inferior.png", nombre: "Tren Inferior" },
-  { imagen_url: "/imagenes/Tren superior.png", nombre: "Tren Superior" },
-  { imagen_url: "/imagenes/Tren inferior.png", nombre: "Tren Inferior" },
-];
+import ModalForm, { Exercise } from "../components/Modal";
 
 function Rutinas() {
   const { id } = useParams<{ id: string }>(); // Aquí obtenemos el parámetro `id` de la URL
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [misRutinas, setMisRutinas] = useState<
+    { imagen: string; nombre: string; ejercicios: Exercise[] }[]
+  >([]);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+  const clearRoutines = () => {
+    localStorage.removeItem("routines");
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    // Cargar las rutinas desde el localStorage al montar el componente
+    const storedRoutines = JSON.parse(localStorage.getItem("routines") || "[]");
+    setMisRutinas(storedRoutines);
+  }, [isModalOpen]); // Actualizar la lista cuando se cierra el modal
 
   return (
     <section className="gimnasio">
-      <Sidebar name={id || "Gimnasio"} active="rutinas"></Sidebar>
+      {isModalOpen && <ModalForm closeModal={closeModal} />}
+      <Sidebar name={id || "Gimnasio"} active="rutinas" />
       <div className="main">
         <div className="title-and-button">
           <span className="title">Rutinas</span>
-          <button className="nueva-rutina">Nueva Rutina</button>
+          <button className="nueva-rutina" onClick={openModal}>
+            Nueva Rutina
+          </button>
+          <button className="nueva-rutina" onClick={clearRoutines}>
+            Limpiar Rutinas
+          </button>
         </div>
+
         <div className="list-cards">
-          {misGimnasios.map((gimnasio) => (
+          {misRutinas.map((rutina, index) => (
             <CardRutina
-              img={gimnasio.imagen_url}
-              title={gimnasio.nombre}
-              exercises={5}
+              key={index}
+              img={rutina.imagen}
+              title={rutina.nombre}
+              exercises={`${rutina.ejercicios.length}`}
             />
           ))}
         </div>
