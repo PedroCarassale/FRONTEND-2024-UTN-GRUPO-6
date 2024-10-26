@@ -13,7 +13,7 @@
 }
 
 /* Estilo del contenido del modal */
-.modal-content {
+.modal-form-content {
   background-color: #fafafa; /* Color oscuro para dark mode */
   padding: 20px;
   border-radius: 10px;
@@ -25,18 +25,18 @@
   overflow-y: scroll;
 }
 
-.modal-content h2 {
+.modal-form-content h2 {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.modal-content label {
+.modal-form-content label {
   display: block;
   margin-top: 10px;
 }
 
-.modal-content input,
-.modal-content select {
+.modal-form-content input,
+.modal-form-content select {
   width: 100%;
   padding: 8px;
   margin-top: 5px;

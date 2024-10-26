@@ -131,7 +131,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ closeModal }) => {
 
   return (
     <div className="modal-overlay">
-      <div className="modal-content">
+      <div className="modal-form-content">
         <h2>Creación Rutina</h2>
 
         <form>
@@ -216,7 +216,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ closeModal }) => {
                       className="cancel-button"
                       onClick={() => deleteExercise(index)}
                     >
-                      Cancelar
+                      Eliminar
                     </button>
                     <button type="button" onClick={() => saveExercise(index)}>
                       Guardar
