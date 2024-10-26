@@ -1,0 +1,132 @@
+/* Estilo del overlay del modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Oscurece el fondo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Estilo del contenido del modal */
+.modal-content {
+  background-color: #fafafa; /* Color oscuro para dark mode */
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 100%;
+  max-height: 85%;
+  color: #000000;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  overflow-y: scroll;
+}
+
+.modal-content h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.modal-content label {
+  display: block;
+  margin-top: 10px;
+}
+
+.modal-content input,
+.modal-content select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: 1px solid #3c3c3c;
+  background-color: #fafafa;
+  color: #3c3c3c;
+  border-radius: 5px;
+}
+
+/* Sección de ejercicios */
+.exercise-section {
+  margin-bottom: 20px;
+  border: 1px solid #3c3c3c;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.exercise-details {
+  border: 1px solid #3c3c3c;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.buttons-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.buttons-group button {
+  background-color: #fafafa;
+  color: #3c3c3c;
+  border: 1px solid #3c3c3c;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.buttons-group button:hover {
+  background-color: #555;
+}
+
+.add-exercise-button {
+  background-color: #fafafa;
+  border-radius: 5px;
+  color: #3c3c3c;
+  border: 1px solid #3c3c3c;
+  width: 100%;
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.add-exercise-button:hover {
+  background-color: #666;
+}
+
+.exercise-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+
+.exercise-view span {
+  font-size: 16px;
+}
+
+.exercise-view button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px; /* Ancho y alto iguales para hacer el círculo */
+  height: 40px;
+  border-radius: 50%; /* Hace el botón circular */
+  background-color: #fafafa; /* Color de fondo */
+  border: none; /* Sin borde */
+  color: #3c3c3c; /* Color del icono */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.exercise-view button:hover {
+  background-color: #ebe8e8; /* Color al pasar el cursor */
+}
+
+.modal-label-ejercicios {
+  margin-bottom: 5px;
+}
