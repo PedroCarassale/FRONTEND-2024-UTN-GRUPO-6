@@ -7,7 +7,7 @@ function Gym() {
 
   return (
     <section className="gimnasio">
-      <Sidebar name={id || "Gimnasio"}></Sidebar>
+      <Sidebar name={id || "Gimnasio"} active=""></Sidebar>
     </section>
   );
 }
