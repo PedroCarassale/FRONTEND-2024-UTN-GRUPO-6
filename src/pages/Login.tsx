@@ -1,28 +1,61 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Importa useNavigate
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
 const Login: React.FC = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
-  const [formData, setFormData] = useState({
+  const [errorMessage, setErrorMessage] = useState(""); // Nuevo estado para el mensaje de error
+  const [registerFormData, setRegisterFormData] = useState({
     nombre: "",
     apellido: "",
     nombre_usuario: "",
     dni: "",
     correo: "",
     clave: "",
-    rol_id: 1, // Asignar rol_id por defecto
+    rol_id: 1,
+  });
+  const [loginFormData, setLoginFormData] = useState({
+    correo: "",
+    clave: "",
   });
 
-  const navigate = useNavigate(); // Crea una instancia de navigate
+  const navigate = useNavigate();
 
   const handleSwitchMode = () => {
     setIsLoginMode((prevMode) => !prevMode);
+    setErrorMessage(""); // Reinicia el mensaje de error al cambiar de modo
   };
 
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Lógica para enviar los datos de login
+
+    try {
+      const response = await fetch("http://localhost:3000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginFormData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Credenciales incorrectas. Intenta de nuevo.");
+      }
+
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      console.log("Usuario creado:", data);
+
+      navigate("/");
+    } catch (error: unknown) {
+      console.error("Error:", error);
+
+      if (error instanceof Error) {
+        setErrorMessage(error.message); // Accede al mensaje del error de forma segura
+      } else {
+        setErrorMessage("Ocurrió un error inesperado");
+      }
+    }
   };
 
   const handleRegisterSubmit = async (e: React.FormEvent) => {
@@ -34,7 +67,7 @@ const Login: React.FC = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(registerFormData),
       });
 
       if (!response.ok) {
@@ -44,23 +77,26 @@ const Login: React.FC = () => {
       const data = await response.json();
       console.log("Usuario creado:", data);
 
-      // Redirige al usuario a la página de login
-      navigate("/login"); // Ajusta la ruta según tu configuración
-
-      // Opcional: mostrar un mensaje de éxito
-      // Puedes agregar un estado para manejar mensajes de éxito o notificaciones
+      navigate("/login");
     } catch (error) {
       console.error("Error:", error);
-      // Manejo de errores (por ejemplo, mostrar un mensaje en la UI)
+      setErrorMessage("Ocurrió un error al registrar el usuario.");
     }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    if (isLoginMode) {
+      setLoginFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    } else {
+      setRegisterFormData((prevData) => ({
+        ...prevData,
+        [name]: value,
+      }));
+    }
   };
 
   return (
@@ -68,10 +104,26 @@ const Login: React.FC = () => {
       <div className="login-container">
         <h1>{isLoginMode ? "Iniciar Sesión" : "Registro de Usuario"}</h1>
 
+        {errorMessage && <div className="error-message">{errorMessage}</div>}
+
         {isLoginMode ? (
           <form onSubmit={handleLoginSubmit} className="login-form">
-            <input type="email" placeholder="Correo electrónico" required />
-            <input type="password" placeholder="Contraseña" required />
+            <input
+              type="email"
+              name="correo"
+              value={loginFormData.correo}
+              onChange={handleInputChange}
+              placeholder="Correo electrónico"
+              required
+            />
+            <input
+              type="password"
+              name="clave"
+              value={loginFormData.clave}
+              placeholder="Contraseña"
+              onChange={handleInputChange}
+              required
+            />
             <button type="submit">Ingresar</button>
             <p>
               ¿Nuevo en la plataforma?{" "}
@@ -86,7 +138,7 @@ const Login: React.FC = () => {
               type="text"
               name="nombre"
               placeholder="Nombre"
-              value={formData.nombre}
+              value={registerFormData.nombre}
               onChange={handleInputChange}
               required
             />
@@ -94,7 +146,7 @@ const Login: React.FC = () => {
               type="text"
               name="apellido"
               placeholder="Apellido"
-              value={formData.apellido}
+              value={registerFormData.apellido}
               onChange={handleInputChange}
               required
             />
@@ -102,7 +154,7 @@ const Login: React.FC = () => {
               type="text"
               name="nombre_usuario"
               placeholder="Nombre de usuario"
-              value={formData.nombre_usuario}
+              value={registerFormData.nombre_usuario}
               onChange={handleInputChange}
               required
             />
@@ -110,7 +162,7 @@ const Login: React.FC = () => {
               type="text"
               name="dni"
               placeholder="DNI"
-              value={formData.dni}
+              value={registerFormData.dni}
               onChange={handleInputChange}
               required
             />
@@ -118,7 +170,7 @@ const Login: React.FC = () => {
               type="email"
               name="correo"
               placeholder="Correo electrónico"
-              value={formData.correo}
+              value={registerFormData.correo}
               onChange={handleInputChange}
               required
             />
@@ -126,7 +178,7 @@ const Login: React.FC = () => {
               type="password"
               name="clave"
               placeholder="Contraseña"
-              value={formData.clave}
+              value={registerFormData.clave}
               onChange={handleInputChange}
               required
             />
