@@ -1,13 +1,17 @@
 import "./CardRutina.css";
-import { Pencil, Eye } from "lucide-react";
+import { Pencil, X } from "lucide-react";
 
 interface CardRutinaProps {
   img: string;
   title: string;
   exercises: string;
+  onEdit: () => void;
 }
+const deleteRoutine = () => {
+  console.log("deleting...");
+};
 
-const CardRutina = ({ img, title, exercises }: CardRutinaProps) => {
+const CardRutina = ({ img, title, exercises, onEdit }: CardRutinaProps) => {
   return (
     <section className="card">
       <div className="card-content">
@@ -16,11 +20,11 @@ const CardRutina = ({ img, title, exercises }: CardRutinaProps) => {
         <div className="exercises-and-buttons">
           <span>{exercises} ejercicios</span>
           <div className="card-buttons">
-            <button className="card-view">
-              <Eye size={20} /> {/* Ajusta el tamaño según sea necesario */}
-            </button>
-            <button className="card-edit">
+            <button className="card-edit" onClick={onEdit}>
               <Pencil size={20} /> {/* Ajusta el tamaño según sea necesario */}
+            </button>
+            <button className="card-view" onClick={deleteRoutine}>
+              <X size={20} /> {/* Ajusta el tamaño según sea necesario */}
             </button>
           </div>
         </div>

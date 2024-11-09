@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Pencil } from "lucide-react";
 import "./Modal.css";
 
@@ -19,14 +19,21 @@ interface Routine {
 
 interface ModalFormProps {
   closeModal: () => void;
+  initialData?: any; // Prop para cargar los datos de una rutina
 }
 
-const ModalForm: React.FC<ModalFormProps> = ({ closeModal }) => {
-  const [nombreRutina, setNombreRutina] = useState<string>("");
-  const [imagenRutina, setImagenRutina] = useState<string | null>(null);
+const ModalForm: React.FC<ModalFormProps> = ({ closeModal, initialData }) => {
+  const [nombreRutina, setNombreRutina] = useState<string>(
+    initialData?.nombre || ""
+  );
+  const [imagenRutina, setImagenRutina] = useState<string | null>(
+    initialData?.imagen || ""
+  );
   const [descansoEntreEjercicios, setDescansoEntreEjercicios] =
     useState<string>("");
-  const [exercises, setExercises] = useState<Exercise[]>([]);
+  const [exercises, setExercises] = useState<Exercise[]>(
+    initialData.ejercicios || []
+  );
 
   const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -128,6 +135,13 @@ const ModalForm: React.FC<ModalFormProps> = ({ closeModal }) => {
     //   alert("Hubo un problema al guardar la rutina.");
     // }
   };
+
+  useEffect(() => {
+    if (initialData) {
+      setNombreRutina(initialData.nombre);
+      // y otros campos...
+    }
+  }, [initialData]);
 
   return (
     <div className="modal-overlay">

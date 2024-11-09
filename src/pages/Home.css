@@ -1,21 +1,4 @@
-body {
-  background-color: #ffffff;
-}
-
-.mis-gimnasios {
-  font-size: 35px;
-  color: #000000;
-}
-
-.app {
-  margin: 20px;
-  display: flexbox;
-  justify-content: center;
-}
-
-.app-explorar-gimnasios-cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
+.MuiAvatar-img {
+  padding: 20px;
+  background: #f9f9f9;
 }

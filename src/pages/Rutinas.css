@@ -27,6 +27,7 @@
   cursor: pointer;
   border-radius: 5px;
   border: #3c3c3c 1px solid;
+  width: 10vw;
 }
 
 .nueva-rutina:hover {
