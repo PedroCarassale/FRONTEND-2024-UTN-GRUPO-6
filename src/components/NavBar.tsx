@@ -5,7 +5,7 @@ import "./Navbar.css";
 
 export default function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark">
+    <nav className="navbar navbar-expand-lg">
       <div className="container-fluid">
         {/* Logo */}
         <a className="navbar-brand" href="/">
@@ -13,18 +13,18 @@ export default function NavBar() {
         </a>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="/entrenamiento">
+              Entrenamiento
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/rutinas">
+              Rutinas
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/gimnasios">
               Gimnasios
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Eventos
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Reseñas
             </a>
           </li>
         </ul>
