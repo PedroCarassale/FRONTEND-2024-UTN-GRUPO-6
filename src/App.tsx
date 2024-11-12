@@ -20,9 +20,9 @@ function App() {
           <Route path="/gimnasios" element={<Gimnasios />} />
           <Route path="/login" element={<Login />} />
           <Route path="/rutinas" element={<Rutinas isSidebarOpen={false} />} />
-          <Route path="/gimnasio/:id" element={<Gym />} />
+          <Route path="/gimnasios/:id" element={<Gym />} />
           <Route
-            path="/gimnasio/:id/rutinas"
+            path="/gimnasios/:id/rutinas"
             element={<Rutinas isSidebarOpen={true} />}
           />
         </Route>
