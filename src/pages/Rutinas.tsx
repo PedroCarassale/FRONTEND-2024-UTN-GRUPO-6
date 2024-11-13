@@ -4,22 +4,24 @@ import Sidebar from "../components/Sidebar";
 import "./Rutinas.css";
 import CardRutina from "../components/CardRutina";
 import ModalForm, { Exercise } from "../components/Modal";
+import { backendUrl } from "../config";
 
 function Rutinas() {
+  type Routine = {
+    id: number;
+    imagen_url: string;
+    nombre: string;
+    ejercicios: Exercise[];
+    descanso: string;
+  };
+
   const { id } = useParams<{ id: string }>(); // Aquí obtenemos el parámetro `id` de la URL
   const isSidebarOpen = window.location.href.includes("gimnasio");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [editingRoutine, setEditingRoutine] = useState<any | null>(null);
-  const [misRutinas, setMisRutinas] = useState<
-    {
-      imagen: string;
-      nombre: string;
-      ejercicios: Exercise[];
-      descanso: string;
-    }[]
-  >([]);
+  const [editingRoutine, setEditingRoutine] = useState<Routine | null>(null);
+  const [misRutinas, setMisRutinas] = useState<Routine[]>([]);
 
-  const openModal = (routine = null) => {
+  const openModal = (routine: Routine | null = null) => {
     setEditingRoutine(routine); // Cargar datos de rutina
     setIsModalOpen(true);
   };
@@ -34,6 +36,28 @@ function Rutinas() {
     setMisRutinas(storedRoutines);
   }, [isModalOpen]); // Actualizar la lista cuando se cierra el modal
 
+  // Obtener ID del gimnasio por nombre
+  const fetchRutinas = async () => {
+    try {
+      const response = await fetch(`${backendUrl}/rutinas`);
+      if (response.ok) {
+        const rutinas = await response.json();
+        const gym = gyms.find(
+          (g) => g.nombre.toLowerCase() === id?.toLowerCase()
+        );
+        if (gym) {
+          setMisRutinas(gym.id);
+        } else {
+          console.error("Gimnasio no encontrado");
+        }
+      } else {
+        console.error("Error al obtener los gimnasios");
+      }
+    } catch (error) {
+      console.error("Error al hacer fetch del gimnasio:", error);
+    }
+  };
+
   return (
     <section className="gimnasio">
       {isModalOpen && (
@@ -43,7 +67,7 @@ function Rutinas() {
       <div className="main">
         <div className="title-and-button">
           <span className="title">Rutinas</span>
-          <button className="nueva-rutina" onClick={openModal}>
+          <button className="nueva-rutina" onClick={() => openModal(null)}>
             Nueva Rutina
           </button>
         </div>
@@ -52,7 +76,7 @@ function Rutinas() {
           {misRutinas.map((rutina, index) => (
             <CardRutina
               key={index}
-              img={rutina.imagen}
+              img={rutina.imagen_url}
               title={rutina.nombre}
               exercises={`${rutina.ejercicios.length}`}
               onEdit={() => openModal(rutina)}

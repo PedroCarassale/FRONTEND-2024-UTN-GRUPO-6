@@ -39,14 +39,14 @@ const Home: React.FC = () => {
       <Grid container spacing={3} maxWidth={800}>
         {[
           {
-            title: "Crear Rutina",
-            path: "/crear-rutina",
-            image: images.crearRutina,
-          },
-          {
-            title: "Ver mis Rutinas",
+            title: "Rutinas",
             path: "/rutinas",
             image: images.verRutinas,
+          },
+          {
+            title: "Entrenamiento",
+            path: "/entrenamiento",
+            image: images.crearRutina,
           },
           { title: "Gimnasios", path: "/gimnasios", image: images.gimnasios },
         ].map((card, index) => (
