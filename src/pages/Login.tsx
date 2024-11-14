@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAlert } from "../components/AlertContext";
 import "./Login.css";
 
 const Login: React.FC = () => {
   const [isLoginMode, setIsLoginMode] = useState(true);
-  const [errorMessage, setErrorMessage] = useState(""); // Nuevo estado para el mensaje de error
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState(""); // Nuevo estado para el mensaje de éxito
   const [registerFormData, setRegisterFormData] = useState({
     nombre: "",
     apellido: "",
@@ -20,17 +22,19 @@ const Login: React.FC = () => {
   });
 
   const navigate = useNavigate();
+  const { showAlert } = useAlert();
 
   const handleSwitchMode = () => {
     setIsLoginMode((prevMode) => !prevMode);
-    setErrorMessage(""); // Reinicia el mensaje de error al cambiar de modo
+    setErrorMessage("");
+    setSuccessMessage(""); // Reinicia el mensaje de éxito al cambiar de modo
   };
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/login", {
+      const response = await fetch("http://localhost:3000/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -44,14 +48,15 @@ const Login: React.FC = () => {
 
       const data = await response.json();
       localStorage.setItem("token", data.token);
-      console.log("Usuario creado:", data);
 
+      // Mostrar alerta de éxito
+      showAlert("Usuario logueado exitosamente.");
       navigate("/");
     } catch (error: unknown) {
       console.error("Error:", error);
 
       if (error instanceof Error) {
-        setErrorMessage(error.message); // Accede al mensaje del error de forma segura
+        setErrorMessage(error.message);
       } else {
         setErrorMessage("Ocurrió un error inesperado");
       }
@@ -76,8 +81,8 @@ const Login: React.FC = () => {
 
       const data = await response.json();
       console.log("Usuario creado:", data);
-
-      navigate("/login");
+      handleSwitchMode();
+      showAlert("Usuario creado exitosamente.");
     } catch (error) {
       console.error("Error:", error);
       setErrorMessage("Ocurrió un error al registrar el usuario.");
@@ -104,7 +109,11 @@ const Login: React.FC = () => {
       <div className="login-container">
         <h1>{isLoginMode ? "Iniciar Sesión" : "Registro de Usuario"}</h1>
 
+        {/* Mostrar mensajes de error y éxito */}
         {errorMessage && <div className="error-message">{errorMessage}</div>}
+        {successMessage && (
+          <div className="success-message">{successMessage}</div>
+        )}
 
         {isLoginMode ? (
           <form onSubmit={handleLoginSubmit} className="login-form">
