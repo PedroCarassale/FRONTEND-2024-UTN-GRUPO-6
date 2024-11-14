@@ -1,0 +1,174 @@
+/* Estilo general */
+body {
+  background-color: #ffffff;
+  color: #000000;
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+.training-plan-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Estilo para el calendario */
+.react-calendar {
+  width: 100%;
+  max-width: 800px;
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Encabezado del calendario */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0; /* Fondo suave */
+  color: #000000; /* Texto negro */
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.react-calendar__navigation button {
+  background-color: transparent;
+  border: none;
+  color: #555555; /* Gris oscuro */
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.react-calendar__navigation button:hover {
+  color: #333333; /* Gris más oscuro al hacer hover */
+}
+
+.react-calendar__navigation button:disabled {
+  color: #aaaaaa; /* Botones deshabilitados en gris claro */
+}
+
+/* Mes y Año */
+.react-calendar__navigation span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Estilo para los días del calendario */
+.react-calendar__tile {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #eeeeee;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #333333; /* Números de los días en gris oscuro */
+}
+
+/* Día de hoy */
+.react-calendar__tile--now {
+  background-color: #b3e5fc; /* Azul claro pastel */
+  color: #000000;
+}
+
+/* Día seleccionado */
+.react-calendar__tile--active {
+  background-color: #c8e6c9; /* Verde claro pastel */
+  color: #000000;
+}
+
+/* Hover en cualquier día */
+.react-calendar__tile:hover {
+  background-color: #f5f5f5;
+}
+
+/* Días fuera del mes actual */
+.react-calendar__tile--neighboringMonth {
+  color: #cccccc; /* Gris claro */
+  background-color: #f9f9f9; /* Fondo ligeramente gris */
+}
+
+/* Contenido de cada día */
+.day-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.routine-name {
+  font-size: 0.85em;
+  font-weight: bold;
+  color: #333333;
+}
+
+.add-routine-btn {
+  background-color: transparent;
+  color: #333333;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.add-routine-btn:hover {
+  background-color: #e0e0e0;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.routine-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.routine-list li {
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #333333;
+}
+
+.close-btn {
+  background-color: #ff5555;
+}

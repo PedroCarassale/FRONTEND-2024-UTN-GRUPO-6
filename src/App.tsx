@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Rutinas from "./pages/Rutinas";
 import Login from "./pages/Login";
 import MainLayout from "./pages/MainLayout";
+import TrainingPlanPage from "./pages/TrainingPlanPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Home />} />
           <Route path="/gimnasios" element={<Gimnasios />} />
+          <Route path="/entrenamiento" element={<TrainingPlanPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/rutinas" element={<Rutinas isSidebarOpen={false} />} />
           <Route path="/gimnasios/:id" element={<Gym />} />
