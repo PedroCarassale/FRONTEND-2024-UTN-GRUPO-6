@@ -1,4 +1,4 @@
-import { CircleGauge, Dumbbell } from "lucide-react";
+import { CircleGauge, UserRoundSearch } from "lucide-react";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
@@ -14,13 +14,13 @@ export default function Sidebar({ name, active }: SidebarProps) {
       <ul className={"sidebar-list"}>
         <li className="sidebar-item">
           <Link
-            to={`ejercicios`}
-            className={`link ${active === "ejercicios" ? "item-active" : ""}`}
+            to={`miembros`}
+            className={`link ${active === "miembros" ? "item-active" : ""}`}
           >
             <div className="icon">
-              <Dumbbell></Dumbbell>
+              <UserRoundSearch></UserRoundSearch>
             </div>
-            <span className="sidebar-text">Ejercicios</span>
+            <span className="sidebar-text">Miembros</span>
           </Link>
         </li>
         <li className="sidebar-item">

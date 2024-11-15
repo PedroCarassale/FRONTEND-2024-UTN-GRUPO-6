@@ -1,7 +1,7 @@
 /* Estilo general */
 body {
-  background-color: #f8f9fa; /* Fondo blanco suave */
-  color: #212529; /* Texto en gris oscuro */
+  background-color: #f8f9fa;
+  color: #212529;
   margin: 0;
 }
 
@@ -17,7 +17,7 @@ h2 {
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 20px;
-  color: #495057; /* Gris suave */
+  color: #495057;
 }
 
 /* Estilo para el calendario */
@@ -35,7 +35,7 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #e9ecef; /* Fondo gris suave */
+  background-color: #e9ecef;
   color: #343a40;
   padding: 10px;
   border-bottom: 1px solid #ced4da;
@@ -85,14 +85,14 @@ h2 {
 
 /* Día de hoy */
 .react-calendar__tile--now {
-  background-color: #d1e7dd; /* Verde pastel */
+  background-color: #d1e7dd;
   color: #212529;
   font-weight: 600;
 }
 
 /* Día seleccionado */
 .react-calendar__tile--active {
-  background: #ffe5b4; /* Naranja pastel */
+  background: #ffe5b4;
   color: #212529;
   animation: pulse 0.2s ease-in-out;
 }
@@ -157,22 +157,26 @@ h2 {
   background: #ffffff;
   padding: 25px;
   border-radius: 10px;
-  width: 320px;
+  width: 600px; /* Aumenta el ancho del modal */
   max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Título del modal */
 .modal-content h3 {
-  font-size: 20px;
+  font-size: 24px;
   margin-bottom: 15px;
   color: #343a40;
 }
 
+/* Listado de rutinas */
 .routine-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 200px;
+  max-height: 300px;
   overflow-y: auto;
 }
 

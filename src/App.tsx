@@ -8,6 +8,7 @@ import Login from "./pages/Login";
 import MainLayout from "./pages/MainLayout";
 import { AlertProvider } from "./components/AlertContext";
 import TrainingPlanPage from "./pages/TrainingPlanPage";
+import Miembros from "./pages/Miembros";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route path="/rutinas" element={<Rutinas />} />
             <Route path="/gimnasio/:id" element={<Gym />} />
             <Route path="/gimnasio/:id/rutinas" element={<Rutinas />} />
+            <Route path="/gimnasio/:id/miembros" element={<Miembros />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -48,6 +48,7 @@ const Login: React.FC = () => {
 
       const data = await response.json();
       localStorage.setItem("token", data.token);
+      localStorage.setItem("usuario_id", data.usuario_id);
 
       // Mostrar alerta de éxito
       showAlert("Usuario logueado exitosamente.");

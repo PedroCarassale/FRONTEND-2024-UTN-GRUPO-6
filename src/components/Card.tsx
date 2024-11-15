@@ -17,7 +17,7 @@ const getTags = (tags: string[][]) => {
 
 const Card = ({ img, title, description, tags }: CardProps) => {
   return (
-    <Link to={`${title}`}>
+    <Link to={`/gimnasio/${title}`}>
       <section className="card">
         <div className="card-content">
           <img src={img} className="card-image" />

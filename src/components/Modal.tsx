@@ -36,8 +36,9 @@ interface RoutineReq {
   nombre: string;
   imagen_url: string | null;
   descanso_entre_ejercicios: number;
-  gimnasio_id: number; // Puede ser un string o número según lo definido
+  gimnasio_id: number | null; // Puede ser un string o número según lo definido
   ejercicios: ExerciseReq[];
+  usuario_id: number | null; // Puede ser un string o null
 }
 
 interface AvailableExercise {
@@ -52,7 +53,7 @@ interface ModalFormProps {
 
 const ModalForm: React.FC<ModalFormProps> = ({ closeModal, initialData }) => {
   const { id } = useParams<{ id: string }>(); // Obtener nombre del gimnasio de la URL
-  const [gimnasioId, setGimnasioId] = useState<number>(0);
+  const [gimnasioId, setGimnasioId] = useState<number | null>(null);
 
   const [nombreRutina, setNombreRutina] = useState<string>(
     initialData?.nombre || ""
@@ -187,9 +188,11 @@ const ModalForm: React.FC<ModalFormProps> = ({ closeModal, initialData }) => {
 
   // Función para guardar la rutina completa en JSON
   const saveRoutine = async () => {
+    const usuario_id = localStorage.getItem("usuario_id");
     const newRoutine: RoutineReq = {
       nombre: nombreRutina, // Aquí agregamos el nombre de la rutina
       gimnasio_id: gimnasioId, // Utilizar el ID del gimnasio obtenido
+      usuario_id: usuario_id ? parseInt(usuario_id, 10) : null, // Utilizar el ID del usuario
       imagen_url: imagenRutina,
       descanso_entre_ejercicios: descansoEntreEjercicios,
       ejercicios: exercises.map((exercise) => ({
