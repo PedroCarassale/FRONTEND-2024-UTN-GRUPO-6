@@ -155,13 +155,13 @@ const ModalForm: React.FC<ModalFormProps> = ({ closeModal, initialData }) => {
         newExercises[index] = {
           ...newExercises[index],
           id: selectedExercise.id, // Guardamos también el `id` del ejercicio
-          [field]: value,
+          [field]: value as string,
         };
       }
     } else {
       newExercises[index] = {
         ...newExercises[index],
-        [field]: value,
+        [field]: value as string | number,
       };
     }
 
