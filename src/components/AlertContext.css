@@ -1,0 +1,21 @@
+.alert-overlay {
+  position: fixed;
+  bottom: 75%; /* Ajusta la alerta a 3/4 de la pantalla verticalmente */
+  left: 50%; /* Centra horizontalmente */
+  transform: translate(-50%, -50%); /* Ajuste para centrar completamente */
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* Permite hacer clic en los elementos detrás de la alerta */
+}
+
+.alert-content {
+  background-color: #8ddda0;
+  color: #fff;
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}

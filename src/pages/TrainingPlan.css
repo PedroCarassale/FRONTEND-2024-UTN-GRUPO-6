@@ -1,0 +1,226 @@
+/* Estilo general */
+body {
+  background-color: #f8f9fa;
+  color: #212529;
+  margin: 0;
+}
+
+/* Contenedor principal */
+.training-plan-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #495057;
+}
+
+/* Estilo para el calendario */
+.react-calendar {
+  width: 100%;
+  max-width: 800px;
+  background: #ffffff;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Encabezado del calendario */
+.react-calendar__navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #e9ecef;
+  color: #343a40;
+  padding: 10px;
+  border-bottom: 1px solid #ced4da;
+}
+
+.react-calendar__navigation__label:hover {
+  background-color: transparent !important;
+}
+
+.react-calendar__navigation button {
+  background-color: transparent;
+  border: none;
+  color: #495057;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.react-calendar__navigation button:hover {
+  color: #212529;
+}
+
+.react-calendar__navigation button:disabled {
+  color: #adb5bd;
+}
+
+/* Mes y Año */
+.react-calendar__navigation span {
+  font-size: 18px;
+  font-weight: bold;
+  color: #212529;
+}
+
+/* Estilo para los días del calendario */
+.react-calendar__tile {
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #f1f3f5;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: #495057;
+  border-radius: 8px;
+}
+
+/* Día de hoy */
+.react-calendar__tile--now {
+  background-color: #d1e7dd;
+  color: #212529;
+  font-weight: 600;
+}
+
+/* Día seleccionado */
+.react-calendar__tile--active {
+  background: #ffe5b4;
+  color: #212529;
+  animation: pulse 0.2s ease-in-out;
+}
+
+/* Hover en cualquier día */
+.react-calendar__tile:hover {
+  background-color: #f8f9fa;
+}
+
+/* Días fuera del mes actual */
+.react-calendar__month-view__days__day--neighboringMonth {
+  background: #d6d6d665;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth button {
+  display: none;
+}
+
+/* Contenido de cada día */
+.day-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5px;
+}
+
+.routine-name {
+  font-size: 1em;
+  font-weight: bold;
+  color: #495057;
+}
+
+.add-routine-btn {
+  background-color: #f8f9fa77;
+  color: #49505798;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-routine-btn:hover {
+  background-color: #e2e6ea;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 600px; /* Aumenta el ancho del modal */
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título del modal */
+.modal-content h3 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #343a40;
+}
+
+/* Listado de rutinas */
+.routine-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.routine-list li {
+  margin-bottom: 10px;
+}
+
+.routine-list button {
+  width: 100%;
+  background-color: #e7f1ff;
+  color: #5797f8;
+  border: 1px solid #5797f8;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.routine-list button:hover {
+  background-color: #cfe2ff;
+}
+
+/* Botón de cerrar */
+.close-btn {
+  display: block;
+  margin: 20px auto 0;
+  background-color: #e57373;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: #ef5350;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}

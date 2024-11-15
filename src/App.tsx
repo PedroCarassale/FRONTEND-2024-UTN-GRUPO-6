@@ -1,31 +1,37 @@
 import "./App.css";
-import Card from "./components/Card";
-
-function getCards(count: number) {
-  return Array.from({ length: count }, (_, index) => (
-    <Card
-      img="src/assets/gym.jpg"
-      title="Gym"
-      description="Please add your content here. Keep it short and simple. And smile :)"
-      tags={[
-        ["#f00", "Title"],
-        ["#f00", "Title"],
-      ]}
-    ></Card>
-  ));
-}
+import Gym from "./pages/Gym";
+import Gimnasios from "./pages/Gimnasios";
+import Home from "./pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Rutinas from "./pages/Rutinas";
+import Login from "./pages/Login";
+import MainLayout from "./pages/MainLayout";
+import { AlertProvider } from "./components/AlertContext";
+import TrainingPlanPage from "./pages/TrainingPlanPage";
+import Miembros from "./pages/Miembros";
 
 function App() {
   return (
-    <section className="app">
-      {/* Mis Gimnasios */}
-      <h2 className="mis-gimnasios">Mis Gimnasios</h2>
-      <div className="app-explorar-gimnasios-cards">{getCards(3)}</div>
+    <AlertProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Ruta específica para /login */}
+          <Route path="/login" element={<Login />} />
 
-      {/* Explorar Gimnasios */}
-      <h2 className="mis-gimnasios">Explorar Gimnasios</h2>
-      <div className="app-explorar-gimnasios-cards">{getCards(10)}</div>
-    </section>
+          {/* Rutas hijas dentro de MainLayout */}
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/gimnasios" element={<Gimnasios />} />
+            <Route path="/entrenamiento" element={<TrainingPlanPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/rutinas" element={<Rutinas />} />
+            <Route path="/gimnasio/:id" element={<Gym />} />
+            <Route path="/gimnasio/:id/rutinas" element={<Rutinas />} />
+            <Route path="/gimnasio/:id/miembros" element={<Miembros />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AlertProvider>
   );
 }
 
