@@ -11,7 +11,7 @@ interface Gimnasio {
   imagen_url: string;
 }
 
-function App() {
+function Gimnasios() {
   // En TypeScript, se usa <Gimnasio[]> para decir explícitamente que el estado será un array de objetos Gimnasio.
   // Inicialmente, antes de que lleguen los datos del servidor, el array está vacío ([]), y después lo llenas con los datos que obtienes en el useEffect.
   const [misGimnasios, setMisGimnasios] = useState<Gimnasio[]>([]);
@@ -80,4 +80,4 @@ function App() {
   );
 }
 
-export default App;
+export default Gimnasios;
