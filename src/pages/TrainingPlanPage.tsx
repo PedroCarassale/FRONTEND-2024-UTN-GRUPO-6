@@ -72,7 +72,7 @@ const TrainingPlanPage: React.FC = () => {
               handleDayClick(date);
             }}
           >
-            Asignar
+            +
           </button>
         )}
       </div>

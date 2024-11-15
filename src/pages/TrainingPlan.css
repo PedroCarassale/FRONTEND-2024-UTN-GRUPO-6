@@ -1,11 +1,11 @@
 /* Estilo general */
 body {
-  background-color: #ffffff;
-  color: #000000;
-  font-family: Arial, sans-serif;
+  background-color: #f8f9fa; /* Fondo blanco suave */
+  color: #212529; /* Texto en gris oscuro */
   margin: 0;
 }
 
+/* Contenedor principal */
 .training-plan-container {
   display: flex;
   flex-direction: column;
@@ -14,8 +14,10 @@ body {
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 600;
   margin-bottom: 20px;
+  color: #495057; /* Gris suave */
 }
 
 /* Estilo para el calendario */
@@ -23,9 +25,9 @@ h2 {
   width: 100%;
   max-width: 800px;
   background: #ffffff;
-  border: 1px solid #dddddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
 }
 
 /* Encabezado del calendario */
@@ -33,70 +35,80 @@ h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f0f0f0; /* Fondo suave */
-  color: #000000; /* Texto negro */
+  background-color: #e9ecef; /* Fondo gris suave */
+  color: #343a40;
   padding: 10px;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ced4da;
+}
+
+.react-calendar__navigation__label:hover {
+  background-color: transparent !important;
 }
 
 .react-calendar__navigation button {
   background-color: transparent;
   border: none;
-  color: #555555; /* Gris oscuro */
+  color: #495057;
   font-size: 16px;
-  font-weight: bold;
+  font-weight: 500;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .react-calendar__navigation button:hover {
-  color: #333333; /* Gris más oscuro al hacer hover */
+  color: #212529;
 }
 
 .react-calendar__navigation button:disabled {
-  color: #aaaaaa; /* Botones deshabilitados en gris claro */
+  color: #adb5bd;
 }
 
 /* Mes y Año */
 .react-calendar__navigation span {
   font-size: 18px;
   font-weight: bold;
-  color: #000000;
+  color: #212529;
 }
 
 /* Estilo para los días del calendario */
 .react-calendar__tile {
-  height: 100px;
+  height: 90px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #eeeeee;
+  border: 1px solid #f1f3f5;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  color: #333333; /* Números de los días en gris oscuro */
+  color: #495057;
+  border-radius: 8px;
 }
 
 /* Día de hoy */
 .react-calendar__tile--now {
-  background-color: #b3e5fc; /* Azul claro pastel */
-  color: #000000;
+  background-color: #d1e7dd; /* Verde pastel */
+  color: #212529;
+  font-weight: 600;
 }
 
 /* Día seleccionado */
 .react-calendar__tile--active {
-  background-color: #c8e6c9; /* Verde claro pastel */
-  color: #000000;
+  background: #ffe5b4; /* Naranja pastel */
+  color: #212529;
+  animation: pulse 0.2s ease-in-out;
 }
 
 /* Hover en cualquier día */
 .react-calendar__tile:hover {
-  background-color: #f5f5f5;
+  background-color: #f8f9fa;
 }
 
 /* Días fuera del mes actual */
-.react-calendar__tile--neighboringMonth {
-  color: #cccccc; /* Gris claro */
-  background-color: #f9f9f9; /* Fondo ligeramente gris */
+.react-calendar__month-view__days__day--neighboringMonth {
+  background: #d6d6d665;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth button {
+  display: none;
 }
 
 /* Contenido de cada día */
@@ -104,25 +116,27 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 5px;
 }
 
 .routine-name {
-  font-size: 0.85em;
+  font-size: 1em;
   font-weight: bold;
-  color: #333333;
+  color: #495057;
 }
 
 .add-routine-btn {
-  background-color: transparent;
-  color: #333333;
-  border: 1px solid #cccccc;
-  border-radius: 5px;
-  padding: 5px 10px;
+  background-color: #f8f9fa77;
+  color: #49505798;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 5px 12px;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 .add-routine-btn:hover {
-  background-color: #e0e0e0;
+  background-color: #e2e6ea;
 }
 
 /* Modal */
@@ -132,43 +146,77 @@ h2 {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .modal-content {
   background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
-  width: 300px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 10px;
+  width: 320px;
+  max-width: 90%;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #343a40;
 }
 
 .routine-list {
   list-style: none;
   padding: 0;
-  margin: 10px 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
 .routine-list li {
   margin-bottom: 10px;
 }
 
-button {
-  background-color: #000000;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
+.routine-list button {
+  width: 100%;
+  background-color: #e7f1ff;
+  color: #5797f8;
+  border: 1px solid #5797f8;
+  border-radius: 6px;
   padding: 10px;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
-button:hover {
-  background-color: #333333;
+.routine-list button:hover {
+  background-color: #cfe2ff;
 }
 
+/* Botón de cerrar */
 .close-btn {
-  background-color: #ff5555;
+  display: block;
+  margin: 20px auto 0;
+  background-color: #e57373;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: #ef5350;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
