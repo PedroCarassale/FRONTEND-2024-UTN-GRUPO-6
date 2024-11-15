@@ -4,8 +4,11 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./Navbar.css";
 
 export default function NavBar() {
+  // Verificar si el usuario está logueado
+  const isLoggedIn = !!localStorage.getItem("token");
+
   return (
-    <nav className="navbar navbar-expand-lg">
+    <nav className="navbar navbar-expand-lg navbar-dark">
       <div className="container-fluid">
         {/* Logo */}
         <a className="navbar-brand" href="/">
@@ -13,17 +16,20 @@ export default function NavBar() {
         </a>
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <a className="nav-link" href="/entrenamiento">
-              Entrenamiento
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/rutinas">
+            <a className="nav-link nav-link-rutinas" href="/rutinas">
               Rutinas
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="/gimnasios">
+            <a
+              className="nav-link nav-link-entrenamiento"
+              href="/entrenamiento"
+            >
+              Entrenamiento
+            </a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link nav-link-gimnasios" href="/gimnasios">
               Gimnasios
             </a>
           </li>
@@ -40,16 +46,19 @@ export default function NavBar() {
             />
           </form>
 
-          {/*Mostrar botón de login*/}
-          <a
-            className="btn btn-outline-light ms-3 iniciar-sesion"
-            href="/login"
-          >
-            Iniciar sesión
-          </a>
+          {/* Mostrar botón de Iniciar sesión solo si el usuario no está logueado */}
+          {!isLoggedIn && (
+            <a
+              className="btn btn-outline-light ms-3 iniciar-sesion"
+              href="/login"
+            >
+              Iniciar sesión
+            </a>
+          )}
 
-          {/*Icono de user + dropdown según si está logueado */}
-          {/*<div className="dropdown ms-3">
+          {/* Dropdown del usuario logueado */}
+          {/* {isLoggedIn && (
+            <div className="dropdown ms-3">
               <button
                 className="btn btn-outline-light dropdown-toggle"
                 type="button"
@@ -60,7 +69,10 @@ export default function NavBar() {
                 <i className="bi bi-person-circle"></i>
               </button>
 
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+              <ul
+                className="dropdown-menu dropdown-menu-end"
+                aria-labelledby="dropdownMenuButton"
+              >
                 <li>
                   <a className="dropdown-item" href="#">
                     Cuenta
@@ -75,12 +87,20 @@ export default function NavBar() {
                   <hr className="dropdown-divider" />
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#" onClick={logout}>
+                  <a
+                    className="dropdown-item"
+                    href="#"
+                    onClick={() => {
+                      localStorage.removeItem("token");
+                      window.location.reload(); // Recargar para actualizar el estado de login
+                    }}
+                  >
                     Cerrar sesión
                   </a>
                 </li>
               </ul>
-            </div>*/}
+            </div>
+          )} */}
         </div>
       </div>
     </nav>
