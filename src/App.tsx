@@ -6,30 +6,30 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Rutinas from "./pages/Rutinas";
 import Login from "./pages/Login";
 import MainLayout from "./pages/MainLayout";
+import { AlertProvider } from "./components/AlertContext";
 import TrainingPlanPage from "./pages/TrainingPlanPage";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        {/* Ruta específica para /login */}
-        <Route path="/login" element={<Login />} />
-
-        {/* Rutas hijas dentro de MainLayout */}
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Home />} />
-          <Route path="/gimnasios" element={<Gimnasios />} />
-          <Route path="/entrenamiento" element={<TrainingPlanPage />} />
+    <AlertProvider>
+      <BrowserRouter>
+        <Routes>
+          {/* Ruta específica para /login */}
           <Route path="/login" element={<Login />} />
-          <Route path="/rutinas" element={<Rutinas isSidebarOpen={false} />} />
-          <Route path="/gimnasios/:id" element={<Gym />} />
-          <Route
-            path="/gimnasios/:id/rutinas"
-            element={<Rutinas isSidebarOpen={true} />}
-          />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+
+          {/* Rutas hijas dentro de MainLayout */}
+          <Route path="/" element={<MainLayout />}>
+            <Route index element={<Home />} />
+            <Route path="/gimnasios" element={<Gimnasios />} />
+            <Route path="/entrenamiento" element={<TrainingPlanPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/rutinas" element={<Rutinas />} />
+            <Route path="/gimnasio/:id" element={<Gym />} />
+            <Route path="/gimnasio/:id/rutinas" element={<Rutinas />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AlertProvider>
   );
 }
 

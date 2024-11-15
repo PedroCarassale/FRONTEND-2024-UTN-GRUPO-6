@@ -11,6 +11,10 @@
   color: #3c3c3c;
 }
 
+.nav-link:hover {
+  color: #1976d2;
+}
+
 .buscador {
   visibility: hidden;
   text-decoration: none;
@@ -24,4 +28,31 @@
 .iniciar-sesion {
   color: #3c3c3c;
   border: #3c3c3c 1px solid;
+}
+
+/* Estilos del dropdown de usuario logueado */
+.dropdown {
+  border: 1px solid #000; /* Borde negro al rededor del menu */
+  border-radius: 5px;
+}
+
+.dropdown-menu {
+  border: 1px solid #000; /* Borde negro al rededor del menu */
+}
+
+.dropdown-menu .dropdown-item {
+  color: #000; /* Texto en negro */
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #495057; /* Cambiar el fondo al hacer hover */
+  color: #000; /* Mantener el texto negro */
+}
+
+.dropdown-divider {
+  border-top: 1px solid #000; /* Cambiar el color de la línea divisoria a negro */
+}
+
+.btn-outline-light .bi-person-circle {
+  color: #000; /* Cambiar el color del ícono de usuario a negro */
 }
