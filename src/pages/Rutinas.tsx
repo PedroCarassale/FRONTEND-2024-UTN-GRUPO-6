@@ -20,6 +20,7 @@ function Rutinas() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingRoutine, setEditingRoutine] = useState<Routine | null>(null);
   const [misRutinas, setMisRutinas] = useState<Routine[]>([]);
+  const [gimnasioId, setGimnasioId] = useState<number | null>(null);
 
   const openModal = (routine: Routine | null = null) => {
     setEditingRoutine(routine); // Cargar datos de rutina
@@ -31,13 +32,32 @@ function Rutinas() {
     setEditingRoutine(null); // Limpiar la rutina cuando se cierre el modal
   };
 
+  const fetchGymId = async () => {
+    try {
+      const response = await fetch(`${backendUrl}/gimnasios`);
+      if (response.ok) {
+        const gyms: Gym[] = await response.json();
+        const gym = gyms.find(
+          (g) => g.nombre.toLowerCase() === id?.toLowerCase()
+        );
+        if (gym) {
+          setGimnasioId(gym.id);
+        } else {
+          console.error("Gimnasio no encontrado");
+        }
+      } else {
+        console.error("Error al obtener los gimnasios");
+      }
+    } catch (error) {
+      console.error("Error al hacer fetch del gimnasio:", error);
+    }
+  };
+
   const fetchRutinas = async () => {
     // Cargar las rutinas desde el backend al montar el componente
     const storedUserId = localStorage.getItem("usuario_id");
-    const storedGymId = localStorage.getItem("gimnasio_id");
     const isGymPage = window.location.href.includes("gimnasio");
-
-    const id = isGymPage ? storedGymId : storedUserId;
+    const id = isGymPage ? gimnasioId : storedUserId;
     const path = isGymPage ? "gimnasio" : "usuario";
     try {
       const response = await fetch(`${backendUrl}/rutinas/${path}/${id}`);
@@ -57,8 +77,14 @@ function Rutinas() {
   };
 
   useEffect(() => {
-    fetchRutinas();
-  }, [isModalOpen]); // Actualizar la lista cuando se cierre el modal
+    fetchGymId();
+  }, []); // Se ejecuta una vez al montar el componente para obtener el gimnasio
+
+  useEffect(() => {
+    if (gimnasioId !== null || !window.location.href.includes("gimnasio")) {
+      fetchRutinas();
+    }
+  }, [gimnasioId]); // Se ejecuta después de obtener el gimnasioId, o si no es una página de gimnasio
 
   return (
     <section className="gimnasio">

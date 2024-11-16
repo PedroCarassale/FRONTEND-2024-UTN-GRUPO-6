@@ -27,7 +27,7 @@ interface Routine {
 
 interface ExerciseReq {
   ejercicio_id: number; // Campo requerido para el ID del ejercicio
-  seriesxrepeticiones: string;
+  series_x_repeticiones: string;
   intensidad: string;
   descanso_entre_series: number;
 }
@@ -197,7 +197,7 @@ const ModalForm: React.FC<ModalFormProps> = ({ closeModal, initialData }) => {
       descanso_entre_ejercicios: descansoEntreEjercicios,
       ejercicios: exercises.map((exercise) => ({
         ejercicio_id: exercise.id as number, // Nos aseguramos que el ID está presente
-        seriesxrepeticiones: exercise.seriesReps,
+        series_x_repeticiones: exercise.seriesReps,
         intensidad: exercise.intensidad,
         descanso_entre_series: exercise.descansoSeries,
       })),

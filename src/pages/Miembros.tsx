@@ -39,7 +39,6 @@ function Miembros() {
 
   return (
     <section className="miembros">
-      {isSidebarOpen && <Sidebar name={id || "Gimnasio"} active="miembros" />}
       <div className="main">
         <h2>Lista de Miembros</h2>
         {usuarios.length > 0 ? (
